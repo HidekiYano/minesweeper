@@ -276,6 +276,33 @@ while(qtdMinas > 0) {
 for(let i = 0; i < linhas; i++) {
     for(let j = 0; j < colunas; j++) {
         colocarNumeros(i + 1, j + 1)
+        if($(`#l-${i + 1}-c-${j + 1}`).text() == '0') {
+            $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '0')
+        }
+        if($(`#l-${i + 1}-c-${j + 1}`).text() == '1') {
+            $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '1')
+        }
+        if($(`#l-${i + 1}-c-${j + 1}`).text() == '2') {
+            $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '2')
+        }
+        if($(`#l-${i + 1}-c-${j + 1}`).text() == '3') {
+            $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '3')
+        }
+        if($(`#l-${i + 1}-c-${j + 1}`).text() == '4') {
+            $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '4')
+        }
+        if($(`#l-${i + 1}-c-${j + 1}`).text() == '5') {
+            $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '5')
+        }
+        if($(`#l-${i + 1}-c-${j + 1}`).text() == '6') {
+            $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '6')
+        }
+        if($(`#l-${i + 1}-c-${j + 1}`).text() == '7') {
+            $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '7')
+        }
+        if($(`#l-${i + 1}-c-${j + 1}`).text() == '8') {
+            $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '8')
+        }
     }
 }
 

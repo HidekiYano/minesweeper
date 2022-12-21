@@ -1,43 +1,146 @@
+body {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+}
+
 .bloco {
-    background-color: grey;
-    border: 1px solid;
-    width: 20px;
-    height: 20px;
+    box-sizing: border-box;
+    background-color: rgb(210, 210, 210);
+    border: 1px solid black;
+    width: 25px;
+    height: 25px;
     content-visibility: hidden;
 }
 
 .bloco-clicked {
+    box-sizing: border-box;
     background-color: antiquewhite;
-    border: 1px solid;
-    width: 20px;
-    height: 20px;
+    border: 1px solid black;
+    width: 25px;
+    height: 25px;
+    content-visibility: visible;
+}
+
+.bloco-clicked[valor="0"] {
+    box-sizing: border-box;
+    background-color: rgb(198, 198, 198);
+    border: 1px solid rgb(137, 137, 137);
+    width: 25px;
+    height: 25px;
+    content-visibility: hidden;
+}
+
+.bloco-clicked[valor="1"] {
+    box-sizing: border-box;
+    color: blue;
+    background-color: rgb(198, 198, 198);
+    border: 1px solid black;
+    width: 25px;
+    height: 25px;
+    content-visibility: visible;
+}
+
+.bloco-clicked[valor="2"] {
+    box-sizing: border-box;
+    color: green;
+    background-color: rgb(198, 198, 198);
+    border: 1px solid black;
+    width: 25px;
+    height: 25px;
+    content-visibility: visible;
+}
+
+.bloco-clicked[valor="3"] {
+    box-sizing: border-box;
+    color: red;
+    background-color: rgb(198, 198, 198);
+    border: 1px solid black;
+    width: 25px;
+    height: 25px;
+    content-visibility: visible;
+}
+
+.bloco-clicked[valor="4"] {
+    box-sizing: border-box;
+    color: darkblue;
+    background-color: rgb(198, 198, 198);
+    border: 1px solid black;
+    width: 25px;
+    height: 25px;
+    content-visibility: visible;
+}
+
+.bloco-clicked[valor="5"] {
+    box-sizing: border-box;
+    color: maroon;
+    background-color: rgb(198, 198, 198);
+    border: 1px solid black;
+    width: 25px;
+    height: 25px;
+    content-visibility: visible;
+}
+
+.bloco-clicked[valor="6"] {
+    box-sizing: border-box;
+    color: darkcyan;
+    background-color: rgb(198, 198, 198);
+    border: 1px solid black;
+    width: 25px;
+    height: 25px;
+    content-visibility: visible;
+}
+
+.bloco-clicked[valor="7"] {
+    box-sizing: border-box;
+    color: black;
+    background-color: rgb(198, 198, 198);
+    border: 1px solid black;
+    width: 25px;
+    height: 25px;
+    content-visibility: visible;
+}
+
+.bloco-clicked[valor="8"] {
+    box-sizing: border-box;
+    color: darkgrey;
+    background-color: rgb(198, 198, 198);
+    border: 1px solid black;
+    width: 25px;
+    height: 25px;
     content-visibility: visible;
 }
 
 .bloco-clicked-bandeira {
-    background-color: green;
+    box-sizing: border-box;
+    background-color: rgb(210, 210, 210);;
     border: 1px solid;
-    width: 20px;
-    height: 20px;
-    content-visibility: visible;
+    width: 25px;
+    height: 25px;
+    content: url('imgs/flag-original-transparente.png');
 }
 
 .bloco-mina-clicked {
+    box-sizing: border-box;
     background-color: red;
     border: 1px solid;
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
+    content: url('imgs/bomb.png');
 }
 
 .bloco-mina-game-over {
-    background-color: royalblue;
+    box-sizing: border-box;
+    background-color: rgb(210, 210, 210);;
     border: 1px solid;
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
+    content: url('imgs/bomb.png');
 }
 
 #jogo > div {
     display: flex;
     flex-direction: row;
+    text-align: center;
+    line-height: 25px;
 }
 
