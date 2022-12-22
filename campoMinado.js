@@ -1,10 +1,13 @@
 var linhas = 15
 var colunas = 20
 var qtdMinas = 0
+var tempoTotal = 0
+var gameover = false
 
 var contador = 0
 
 $('#jogo').append($(`<div id="contador"></div>`))
+$('#jogo').append($(`<div id="timer"></div>`))
 
 function colocarMinas(minas) {
     this.qtdMinas = minas
@@ -175,7 +178,7 @@ function clique(id) {
                     }
                 }
                 $(`#${id}`).attr('class', 'bloco-mina-clicked')
-
+                gameover = true
                 alert('BOOM!')
             }
         
@@ -196,6 +199,7 @@ function clique(id) {
                         $('div[bloco-mina="true"]')[i].textContent = 'boom'
                     }
                 }
+                gameover = true
                 alert('Você venceu!!')
             }
         }
@@ -203,7 +207,7 @@ function clique(id) {
     } else if(event.button == 2) {
         contador = $('div[bloco-mina="true"]').length - $('.bloco-clicked-bandeira').length - 1
         if(contador >= 0) {
-            $('#contador').html(contador)
+            $('#contador').html('Minas: ' + contador)
         }
         $(`#${id}`).attr('class', 'bloco-clicked-bandeira')
         if($(`#${id}`).text() == 'x') {
@@ -258,51 +262,79 @@ function clique(id) {
     }
 }
 
-adicionarBlocos(linhas, colunas)
-colocarMinas(20)
+function novoJogo() {
+    adicionarBlocos(linhas, colunas)
+    colocarMinas(20)
 
-while(qtdMinas > 0) {
-    const blocos = $('.bloco')
-    for(let i = 0; i < blocos.length; i++) {
-        if(qtdMinas > 0) {
-            if(Math.random() > 0.90 && $('div[bloco-mina="false"]')) {
-                $('.bloco')[i].setAttribute('bloco-mina', 'true')
-                qtdMinas -= 1
+    while(qtdMinas > 0) {
+        const blocos = $('.bloco')
+        for(let i = 0; i < blocos.length; i++) {
+            if(qtdMinas > 0) {
+                if(Math.random() > 0.90 && $('div[bloco-mina="false"]')) {
+                    $('.bloco')[i].setAttribute('bloco-mina', 'true')
+                    qtdMinas -= 1
+                }
             }
         }
     }
-}
 
-for(let i = 0; i < linhas; i++) {
-    for(let j = 0; j < colunas; j++) {
-        colocarNumeros(i + 1, j + 1)
-        if($(`#l-${i + 1}-c-${j + 1}`).text() == '0') {
-            $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '0')
-        }
-        if($(`#l-${i + 1}-c-${j + 1}`).text() == '1') {
-            $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '1')
-        }
-        if($(`#l-${i + 1}-c-${j + 1}`).text() == '2') {
-            $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '2')
-        }
-        if($(`#l-${i + 1}-c-${j + 1}`).text() == '3') {
-            $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '3')
-        }
-        if($(`#l-${i + 1}-c-${j + 1}`).text() == '4') {
-            $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '4')
-        }
-        if($(`#l-${i + 1}-c-${j + 1}`).text() == '5') {
-            $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '5')
-        }
-        if($(`#l-${i + 1}-c-${j + 1}`).text() == '6') {
-            $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '6')
-        }
-        if($(`#l-${i + 1}-c-${j + 1}`).text() == '7') {
-            $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '7')
-        }
-        if($(`#l-${i + 1}-c-${j + 1}`).text() == '8') {
-            $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '8')
+    for(let i = 0; i < linhas; i++) {
+        for(let j = 0; j < colunas; j++) {
+            colocarNumeros(i + 1, j + 1)
+            if($(`#l-${i + 1}-c-${j + 1}`).text() == '0') {
+                $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '0')
+            }
+            if($(`#l-${i + 1}-c-${j + 1}`).text() == '1') {
+                $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '1')
+            }
+            if($(`#l-${i + 1}-c-${j + 1}`).text() == '2') {
+                $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '2')
+            }
+            if($(`#l-${i + 1}-c-${j + 1}`).text() == '3') {
+                $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '3')
+            }
+            if($(`#l-${i + 1}-c-${j + 1}`).text() == '4') {
+                $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '4')
+            }
+            if($(`#l-${i + 1}-c-${j + 1}`).text() == '5') {
+                $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '5')
+            }
+            if($(`#l-${i + 1}-c-${j + 1}`).text() == '6') {
+                $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '6')
+            }
+            if($(`#l-${i + 1}-c-${j + 1}`).text() == '7') {
+                $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '7')
+            }
+            if($(`#l-${i + 1}-c-${j + 1}`).text() == '8') {
+                $(`#l-${i + 1}-c-${j + 1}`).attr('valor', '8')
+            }
         }
     }
+
+    $('#contador').html('Minas: ' + $('div[bloco-mina="true"]').length)
+    $('#timer').html('Tempo: 0:00')
+    
+    var timer = setInterval(function() {
+        tempoTotal++
+        if(gameover == true) {
+            clearInterval(timer)
+        }
+        
+        if(tempoTotal >= 60) {
+            var minutos = Math.floor(tempoTotal / 60)
+            var segundos = tempoTotal - (60 * minutos)
+            if(segundos < 10) {
+                segundos = '0' + (tempoTotal - (60 * minutos))
+            }
+        } else if(tempoTotal < 60) {
+            var minutos = 0
+            var segundos = tempoTotal
+            if(segundos < 10) {
+                segundos = '0' + tempoTotal
+            }
+        }
+        $('#timer').html('Tempo: ' + minutos + ':' + segundos)
+    }, 1000)
 }
 
+novoJogo()

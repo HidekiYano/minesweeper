@@ -1,28 +1,24 @@
 body {
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(100,130,159,1) 0%, rgba(103,56,96,1) 90% );
     font-family: 'Press Start 2P', cursive;
     font-size: 14px;
+    margin-top: 50px;
+    height: 800px;
 }
 
 .bloco {
     box-sizing: border-box;
+    margin: 1px;
     background-color: rgb(210, 210, 210);
-    border: 1px solid black;
+    border: 2px solid black;
     width: 25px;
     height: 25px;
     content-visibility: hidden;
 }
 
-.bloco-clicked {
-    box-sizing: border-box;
-    background-color: antiquewhite;
-    border: 1px solid black;
-    width: 25px;
-    height: 25px;
-    content-visibility: visible;
-}
-
 .bloco-clicked[valor="0"] {
     box-sizing: border-box;
+    margin: 1px;
     background-color: rgb(198, 198, 198);
     border: 1px solid rgb(137, 137, 137);
     width: 25px;
@@ -32,9 +28,10 @@ body {
 
 .bloco-clicked[valor="1"] {
     box-sizing: border-box;
+    margin: 1px;
     color: blue;
     background-color: rgb(198, 198, 198);
-    border: 1px solid black;
+    border: 2px solid black;
     width: 25px;
     height: 25px;
     content-visibility: visible;
@@ -42,9 +39,10 @@ body {
 
 .bloco-clicked[valor="2"] {
     box-sizing: border-box;
+    margin: 1px;
     color: green;
     background-color: rgb(198, 198, 198);
-    border: 1px solid black;
+    border: 2px solid black;
     width: 25px;
     height: 25px;
     content-visibility: visible;
@@ -52,9 +50,10 @@ body {
 
 .bloco-clicked[valor="3"] {
     box-sizing: border-box;
+    margin: 1px;
     color: red;
     background-color: rgb(198, 198, 198);
-    border: 1px solid black;
+    border: 2px solid black;
     width: 25px;
     height: 25px;
     content-visibility: visible;
@@ -62,9 +61,10 @@ body {
 
 .bloco-clicked[valor="4"] {
     box-sizing: border-box;
+    margin: 1px;
     color: darkblue;
     background-color: rgb(198, 198, 198);
-    border: 1px solid black;
+    border: 2px solid black;
     width: 25px;
     height: 25px;
     content-visibility: visible;
@@ -72,9 +72,10 @@ body {
 
 .bloco-clicked[valor="5"] {
     box-sizing: border-box;
+    margin: 1px;
     color: maroon;
     background-color: rgb(198, 198, 198);
-    border: 1px solid black;
+    border: 2px solid black;
     width: 25px;
     height: 25px;
     content-visibility: visible;
@@ -82,9 +83,10 @@ body {
 
 .bloco-clicked[valor="6"] {
     box-sizing: border-box;
+    margin: 1px;
     color: darkcyan;
     background-color: rgb(198, 198, 198);
-    border: 1px solid black;
+    border: 2px solid black;
     width: 25px;
     height: 25px;
     content-visibility: visible;
@@ -92,9 +94,10 @@ body {
 
 .bloco-clicked[valor="7"] {
     box-sizing: border-box;
+    margin: 1px;
     color: black;
     background-color: rgb(198, 198, 198);
-    border: 1px solid black;
+    border: 2px solid black;
     width: 25px;
     height: 25px;
     content-visibility: visible;
@@ -102,9 +105,10 @@ body {
 
 .bloco-clicked[valor="8"] {
     box-sizing: border-box;
+    margin: 1px;
     color: darkgrey;
     background-color: rgb(198, 198, 198);
-    border: 1px solid black;
+    border: 2px solid black;
     width: 25px;
     height: 25px;
     content-visibility: visible;
@@ -112,8 +116,9 @@ body {
 
 .bloco-clicked-bandeira {
     box-sizing: border-box;
-    background-color: rgb(210, 210, 210);;
-    border: 1px solid;
+    margin: 1px;
+    background-color: rgb(210, 210, 210);
+    border: 2px solid black;
     width: 25px;
     height: 25px;
     content: url('imgs/flag-original-transparente.png');
@@ -121,8 +126,9 @@ body {
 
 .bloco-mina-clicked {
     box-sizing: border-box;
+    margin: 1px;
     background-color: red;
-    border: 1px solid;
+    border: 2px solid black;
     width: 25px;
     height: 25px;
     content: url('imgs/bomb.png');
@@ -130,17 +136,47 @@ body {
 
 .bloco-mina-game-over {
     box-sizing: border-box;
-    background-color: rgb(210, 210, 210);;
-    border: 1px solid;
+    margin: 1px;
+    background-color: rgb(210, 210, 210);
+    border: 2px solid black;
     width: 25px;
     height: 25px;
     content: url('imgs/bomb.png');
 }
 
-#jogo > div {
+#jogo > div, #jogo > h1 {
     display: flex;
     flex-direction: row;
     text-align: center;
     line-height: 25px;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
+#jogo > div:nth-last-child(1){
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    line-height: 25px;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    margin: 30px;
+    padding: 20px;
+}
+
+#timer {
+    margin-bottom: 20px;
+}
+
+#jogo {
+    border: 3px solid rgb(57, 57, 57);
+    background-color: rgb(190, 190, 190);
+    width: fit-content;
+    margin: auto;
+}
