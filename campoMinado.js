@@ -1,17 +1,42 @@
-var linhas = 15
-var colunas = 20
-var qtdMinas = 0
-var tempoTotal = 0
 var gameover = false
-
 var contador = 0
 
-$('#jogo').append($(`<div id="contador"></div>`))
-$('#jogo').append($(`<div id="timer"></div>`))
+$('#iniciar').bind('click', () => {
+    let tempoTotal = 0
+    gameover = false
+    
+    if($('#jogo > *').length > 0) {
+        $('#jogo').html('')
+    }
+    
+    novoJogo(parseInt($('#qtd-linhas').val()), parseInt($('#qtd-colunas').val()), $('#dificuldade').val())
+    
+    var timer = setInterval(function() {
+        $('#iniciar').click(function() {
+            tempoTotal = 0
+        })
 
-function colocarMinas(minas) {
-    this.qtdMinas = minas
-}
+        if(gameover == true) {
+            clearInterval(timer)
+        }
+        
+        tempoTotal++
+        if(tempoTotal >= 60) {
+            var minutos = Math.floor(tempoTotal / 60)
+            var segundos = tempoTotal - (60 * minutos)
+            if(segundos < 10) {
+                segundos = '0' + (tempoTotal - (60 * minutos))
+            }
+        } else if(tempoTotal < 60) {
+            var minutos = 0
+            var segundos = tempoTotal
+            if(segundos < 10) {
+                segundos = '0' + tempoTotal
+            }
+        }
+        $('#timer').html('Tempo: ' + minutos + ':' + segundos)
+    }, 1000)
+})
 
 function checaAcima(linha, coluna) {
     var repeticao = 1
@@ -179,7 +204,7 @@ function clique(id) {
                 }
                 $(`#${id}`).attr('class', 'bloco-mina-clicked')
                 gameover = true
-                alert('BOOM!')
+                alert('BOOM! Você perdeu!')
             }
         
             if($(`#${id}`).text() == '0') {
@@ -192,7 +217,7 @@ function clique(id) {
                 tiraEspacosVazios(l, c)
             }
         
-            if((linhas * colunas) - $('.bloco-clicked').length == $('div[bloco-mina="true"]').length) {
+            if((parseInt($('#qtd-linhas').val()) * parseInt($('#qtd-colunas').val())) - $('.bloco-clicked').length == $('div[bloco-mina="true"]').length) {
                 for(let i = 0; i < $('div[bloco-mina="true"]').length; i++) {
                     $('div[bloco-mina="true"]')[i].setAttribute('class', 'bloco-clicked-bandeira')
                     if($('div[bloco-mina="true"]')[i].textContent == 'x') {
@@ -200,7 +225,7 @@ function clique(id) {
                     }
                 }
                 gameover = true
-                alert('Você venceu!!')
+                alert('Parabéns! Você venceu!!')
             }
         }
         
@@ -260,19 +285,35 @@ function clique(id) {
             $(`#${id}`).text('x')
         }
     }
+
+    if(gameover == true) {
+        $('#jogo').children().children().attr('onmousedown', null)
+    }
 }
 
-function novoJogo() {
+function novoJogo(linhas, colunas, dificuldade) {
+    $('#jogo').css('visibility', 'visible')
+    $('#jogo').append($(`<div id="contador"></div>`))
+    $('#jogo').append($(`<div id="timer"></div>`))
     adicionarBlocos(linhas, colunas)
-    colocarMinas(20)
 
-    while(qtdMinas > 0) {
+    var minas = 0
+
+    if(dificuldade == 'facil') {
+        minas = Math.floor((linhas * colunas) * 0.10)
+    } else if(dificuldade == 'medio') {
+        minas = Math.floor((linhas * colunas) * 0.20)
+    } else if(dificuldade == 'dificil') {
+        minas = Math.floor((linhas * colunas) * 0.35)
+    }
+
+    while(minas > 0) {
         const blocos = $('.bloco')
         for(let i = 0; i < blocos.length; i++) {
-            if(qtdMinas > 0) {
+            if(minas > 0) {
                 if(Math.random() > 0.90 && $('div[bloco-mina="false"]')) {
                     $('.bloco')[i].setAttribute('bloco-mina', 'true')
-                    qtdMinas -= 1
+                    minas -= 1
                 }
             }
         }
@@ -313,28 +354,4 @@ function novoJogo() {
 
     $('#contador').html('Minas: ' + $('div[bloco-mina="true"]').length)
     $('#timer').html('Tempo: 0:00')
-    
-    var timer = setInterval(function() {
-        tempoTotal++
-        if(gameover == true) {
-            clearInterval(timer)
-        }
-        
-        if(tempoTotal >= 60) {
-            var minutos = Math.floor(tempoTotal / 60)
-            var segundos = tempoTotal - (60 * minutos)
-            if(segundos < 10) {
-                segundos = '0' + (tempoTotal - (60 * minutos))
-            }
-        } else if(tempoTotal < 60) {
-            var minutos = 0
-            var segundos = tempoTotal
-            if(segundos < 10) {
-                segundos = '0' + tempoTotal
-            }
-        }
-        $('#timer').html('Tempo: ' + minutos + ':' + segundos)
-    }, 1000)
 }
-
-novoJogo()

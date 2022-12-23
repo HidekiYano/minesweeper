@@ -13,8 +13,65 @@
     <title>Campo Minado</title>
 </head>
 <body oncontextmenu="return false">
+    <h1>Campo Minado</h1>
+    <div id="tela-inicial">
+        <div id="linhas-colunas">
+            <div class="entrada">
+                <label for="colunas">Colunas</label>
+                <select name="colunas" id="qtd-colunas">
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+            <div class="entrada">
+                <label for="linhas">Linhas</label>
+                <select name="linhas" id="qtd-linhas">
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+        </div>
+        <div id="dificuldade-botao">
+            <div class="entrada">
+                <label for="dificuldade">Dificuldade</label>
+                <select name="dificuldade" id="dificuldade">
+                    <option value="facil">Fácil</option>
+                    <option value="medio">Médio</option>
+                    <option value="dificil">Difícil</option>
+                </select>
+            </div>
+            <button id="iniciar">Iniciar jogo!</button>
+        </div>
+    </div>
     <div id="jogo">
-        <h1>Campo Minado</h1>
     </div>
 <script src="campoMinado.js"></script>
 </body>
