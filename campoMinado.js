@@ -1,5 +1,4 @@
 var gameover = false
-var contador = 0
 
 $('#iniciar').bind('click', () => {
     let tempoTotal = 0
@@ -230,10 +229,6 @@ function clique(id) {
         }
         
     } else if(event.button == 2) {
-        contador = $('div[bloco-mina="true"]').length - $('.bloco-clicked-bandeira').length - 1
-        if(contador >= 0) {
-            $('#contador').html('Minas: ' + contador)
-        }
         $(`#${id}`).attr('class', 'bloco-clicked-bandeira')
         if($(`#${id}`).text() == 'x') {
             let l = parseInt($(`#${id}`).attr('id').split('-')[1])
@@ -284,6 +279,8 @@ function clique(id) {
         } else {
             $(`#${id}`).text('x')
         }
+        var contador = $('div[bloco-mina="true"]').length - $('.bloco-clicked-bandeira').length
+        $('#contador').html('Minas: ' + contador)
     }
 
     if(gameover == true) {
